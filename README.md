@@ -1,36 +1,47 @@
-# Delivery de Lanches
+# 🍔 Delivery de Lanches  
 
-## Descrição
-Este é um site de delivery de lanches simples desenvolvido em HTML, CSS e JavaScript. O objetivo do projeto é oferecer aos usuários a capacidade de escolher lanches, adicionar ao carrinho, e finalizar a compra via WhatsApp. 
+Uma aplicação web que simula um **delivery de lanches**, permitindo aos usuários adicionar itens ao carrinho e finalizar o pedido via WhatsApp.  
 
-O site permite a seleção de diferentes lanches, e os usuários podem escolher entre três formas de pagamento: Dinheiro, Cartão e Pix.
+## 🚀 Sobre o Projeto  
+Este projeto é uma aplicação interativa de **delivery de lanches**, construída com **HTML, CSS e JavaScript**.  
 
-## Funcionalidades
-- Visualizar o cardápio com diferentes opções de lanches.
-- Adicionar lanches ao carrinho de compras.
-- Visualizar o conteúdo do carrinho, com a quantidade de itens e o total.
-- Escolher a forma de pagamento: Dinheiro, Cartão ou Pix.
-- Finalizar o pedido com envio de mensagem para o WhatsApp com os detalhes da compra.
+🔹 **Objetivo**: Criar uma plataforma simples para que os usuários possam escolher lanches, adicionar ao carrinho e finalizar o pedido.  
+🔹 **Funcionalidades**:  
+- Listagem de lanches disponíveis  
+- Adição de lanches ao carrinho  
+- Cálculo dinâmico do total do carrinho  
+- Escolha da forma de pagamento (Dinheiro, Cartão, Pix)  
+- Envio do pedido para WhatsApp  
 
-## Tecnologias Utilizadas
-- **HTML5** - Estrutura da página.
-- **CSS3** - Estilos e responsividade.
-- **JavaScript** - Interatividade (adicionar itens ao carrinho, calcular total, finalizar pedido).
+## 🛠️ Tecnologias Utilizadas  
+- HTML5  
+- CSS3  
+- JavaScript (ES6)  
 
-## Como Usar
-1. Abra o arquivo `index.html` em um navegador.
-2. Navegue pelo cardápio e adicione os lanches ao carrinho.
-3. Abra o carrinho para ver os itens selecionados, total e escolher o método de pagamento.
-4. Finalize o pedido, que será enviado automaticamente para o WhatsApp da lanchonete.
+## 📷 Prévia  
+![Delivery de Lanches](https://via.placeholder.com/500x300.png?text=Prévia+do+Projeto)  
 
-## Personalização
-- As imagens dos lanches estão armazenadas na pasta `images/`. Você pode substituir os arquivos de imagem para personalizar o cardápio.
-- O link do WhatsApp está configurado com o número `(11) 99999-9999`. Substitua pelo número da sua lanchonete.
+---
 
-## Observações
-- Este é um projeto simples e pode ser expandido com mais funcionalidades, como a integração com sistemas de pagamento, login de usuário, etc.
-- A responsividade foi implementada para telas menores, como celulares e tablets.
+# 🍔 Delivery of Sandwiches (English Version)  
 
-## Licença
-Este projeto está sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+An interactive web application that simulates a **sandwich delivery service**, allowing users to add items to their cart and finalize the order via WhatsApp.  
 
+## 🚀 About the Project  
+This project is an interactive **sandwich delivery** application built using **HTML, CSS, and JavaScript**.  
+
+🔹 **Objective**: Create a simple platform for users to choose sandwiches, add them to the cart, and complete their order.  
+🔹 **Features**:  
+- Display available sandwiches  
+- Add sandwiches to the cart  
+- Dynamic cart total calculation  
+- Choose payment method (Cash, Card, Pix)  
+- Send order to WhatsApp  
+
+## 🛠️ Technologies Used  
+- HTML5  
+- CSS3  
+- JavaScript (ES6)  
+
+## 📷 Preview  
+![Delivery of Sandwiches](https://via.placeholder.com/500x300.png?text=Project+Preview)  
