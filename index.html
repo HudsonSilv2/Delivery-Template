@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery de Lanches</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <h1>Delivery de Lanches</h1>
+        <nav>
+            <ul>
+                <li><a href="#menu">Cardápio</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a onclick="abrirCarrinho();" id="abrir-carrinho">Carrinho (<span id="contador-carrinho">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Nosso Cardápio</h2>
+
+        <section id="menu">
+            <div class="item">
+                <img src="images/burger.jpg" alt="X-Burguer">
+                <h3>X-Burguer</h3>
+                <p>Pão, hambúrguer, queijo, alface, tomate</p>
+                <span>R$ 15,00</span>
+                <button class="adicionar-carrinho" data-nome="X-Burguer" data-preco="15,00">Adicionar ao Carrinho</button>
+            </div>
+            <div class="item">
+                <img src="images/xbacon2.jpg" alt="X-Salada">
+                <h3>X-Salada</h3>
+                <p>Pão, hambúrguer, queijo, alface, tomate, maionese</p>
+                <span>R$ 18,00</span>
+                <button class="adicionar-carrinho" data-nome="X-Salada" data-preco="18,00">Adicionar ao Carrinho</button>
+            </div>
+            <div class="item">
+                <img src="images/xbacon.jpg" alt="X-Bacon">
+                <h3>X-Bacon</h3>
+                <p>Pão, hambúrguer, queijo, bacon, molho especial</p>
+                <span>R$ 20,00</span>
+                <button class="adicionar-carrinho" data-nome="X-Bacon" data-preco="20,00">Adicionar ao Carrinho</button>
+            </div>
+            <div class="item">
+                <img src="images/burger.jpg" alt="X-Burguer">
+                <h3>X-Burguer</h3>
+                <p>Pão, hambúrguer, queijo, alface, tomate</p>
+                <span>R$ 15,00</span>
+                <button class="adicionar-carrinho" data-nome="X-Burguer" data-preco="15,00">Adicionar ao Carrinho</button>
+            </div>
+            <div class="item">
+                <img src="images/xbacon2.jpg" alt="X-Salada">
+                <h3>X-Salada</h3>
+                <p>Pão, hambúrguer, queijo, alface, tomate, maionese</p>
+                <span>R$ 18,00</span>
+                <button class="adicionar-carrinho" data-nome="X-Salada" data-preco="18,00">Adicionar ao Carrinho</button>
+            </div>
+            <div class="item">
+                <img src="images/xbacon.jpg" alt="X-Bacon">
+                <h3>X-Bacon</h3>
+                <p>Pão, hambúrguer, queijo, bacon, molho especial</p>
+                <span>R$ 20,00</span>
+                <button class="adicionar-carrinho" data-nome="X-Bacon" data-preco="20,00">Adicionar ao Carrinho</button>
+            </div>
+            <div class="item">
+                <img src="images/burger.jpg" alt="X-Burguer">
+                <h3>X-Burguer</h3>
+                <p>Pão, hambúrguer, queijo, alface, tomate</p>
+                <span>R$ 15,00</span>
+                <button class="adicionar-carrinho" data-nome="X-Burguer" data-preco="15,00">Adicionar ao Carrinho</button>
+            </div>
+            <div class="item">
+                <img src="images/xbacon2.jpg" alt="X-Salada">
+                <h3>X-Salada</h3>
+                <p>Pão, hambúrguer, queijo, alface, tomate, maionese</p>
+                <span>R$ 18,00</span>
+                <button class="adicionar-carrinho" data-nome="X-Salada" data-preco="18,00">Adicionar ao Carrinho</button>
+            </div>
+            <div class="item">
+                <img src="images/xbacon.jpg" alt="X-Bacon">
+                <h3>X-Bacon</h3>
+                <p>Pão, hambúrguer, queijo, bacon, molho especial</p>
+                <span>R$ 20,00</span>
+                <button class="adicionar-carrinho" data-nome="X-Bacon" data-preco="20,00">Adicionar ao Carrinho</button>
+            </div>
+        </section>
+
+        <section id="contato">
+            <h2>Entre em Contato</h2>
+            <p>WhatsApp: (11) 99999-9999</p>
+            <p>Instagram: @deliverylanches</p>
+        </section>
+    </main>
+
+    <!-- Carrinho Lateral -->
+    <div id="carrinho-aba">
+        <div id="carrinho-header">
+            <h2>Carrinho</h2>
+            <button id="fechar-carrinho">&times;</button>
+        </div>
+        <ul id="itens-carrinho">
+            <!-- Itens adicionados ao carrinho aparecerão aqui -->
+        </ul>
+        <p><strong>Total: R$ <span id="total">0,00</span></strong></p>
+        <p><strong>Itens: <span id="contador-itens">0</span></strong></p>
+        <h3>Escolha a forma de pagamento:</h3>
+        <label>
+            <input type="radio" name="pagamento" value="Dinheiro" checked> Dinheiro
+        </label>
+        <label>
+            <input type="radio" name="pagamento" value="Cartão"> Cartão
+        </label>
+        <label>
+            <input type="radio" name="pagamento" value="Pix"> Pix
+        </label>
+        <br>
+        <button id="enviar-pedido">Finalizar Pedido</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Delivery de Lanches. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
