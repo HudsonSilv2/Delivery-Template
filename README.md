@@ -79,7 +79,7 @@ Sistema completo de delivery para restaurantes/lanchonetes, desenvolvido com HTM
 ### Configurações do WhatsApp
 O número do WhatsApp está configurado no arquivo `assets/js/script.js`:
 ```javascript
-const numeroWhatsApp = '5584991639078';
+const numeroWhatsApp = '5584991634578';
 ```
 
 ### Taxas e Valores
