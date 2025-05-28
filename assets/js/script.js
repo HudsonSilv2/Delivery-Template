@@ -325,7 +325,7 @@ btnFinalizarPedido?.addEventListener('click', () => {
 
     // Formata a mensagem e envia para o WhatsApp
     const mensagem = formatarMensagemWhatsApp(pedido, endereco, formaPagamentoSelecionada);
-    const numeroWhatsApp = '5584991639078'; // Número do WhatsApp do estabelecimento
+    const numeroWhatsApp = '5584991633458'; // Número do WhatsApp do estabelecimento
     window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagem}`);
     
     // Mostra o popup de agradecimento
