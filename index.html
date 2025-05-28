@@ -3,126 +3,938 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delivery de Lanches</title>
-    <link rel="stylesheet" href="index.css">
+    <meta name="description" content="Delivery de lanches com os melhores hambúrgueres da região">
+    <meta name="keywords" content="delivery, lanches, hambúrguer, x-burguer, x-salada, x-bacon">
+    <meta name="author" content="Seu Nome">
+    <meta name="theme-color" content="#ff6600">
+    
+    <title>Delivery de Lanches | Os Melhores Hambúrgueres da Região</title>
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Delivery de Lanches</h1>
-        <nav>
-            <ul>
-                <li><a href="#menu">Cardápio</a></li>
-                <li><a href="#contato">Contato</a></li>
-                <li><a onclick="abrirCarrinho();" id="abrir-carrinho">Carrinho (<span id="contador-carrinho">0</span>)</a></li>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Delivery de Lanches</h1>
+            <nav class="nav-principal" aria-label="Navegação principal">
+                <ul class="menu-principal">
+                    <li><a href="#cardapio" class="menu-link">Cardápio</a></li>
+                    <li><a href="#contato" class="menu-link">Contato</a></li>
+                    <li>
+                        <button class="carrinho-btn" 
+                                onclick="abrirCarrinho();" 
+                                id="abrir-carrinho" 
+                                aria-label="Abrir carrinho de compras">
+                            <span class="carrinho-texto">Carrinho</span>
+                            <span class="contador-badge" id="contador-carrinho" aria-live="polite">0</span>
+                        </button>
+                    </li>
             </ul>
         </nav>
+        </div>
     </header>
 
-    <main>
-        <h2>Nosso Cardápio</h2>
+    <!-- Conteúdo Principal -->
+    <main class="conteudo-principal">
+        <div class="container">
+            <!-- Seção Cardápio -->
+            <section id="cardapio" class="secao-cardapio">
+                <header class="secao-header">
+                    <h2 class="titulo-secao">Nosso Cardápio</h2>
+                    <p class="subtitulo-secao">Escolha entre nossos deliciosos hambúrgueres artesanais</p>
+                </header>
 
-        <section id="menu">
-            <div class="item">
-                <img src="images/burger.jpg" alt="X-Burguer">
-                <h3>X-Burguer</h3>
-                <p>Pão, hambúrguer, queijo, alface, tomate</p>
-                <span>R$ 15,00</span>
-                <button class="adicionar-carrinho" data-nome="X-Burguer" data-preco="15,00">Adicionar ao Carrinho</button>
-            </div>
-            <div class="item">
-                <img src="images/xbacon2.jpg" alt="X-Salada">
-                <h3>X-Salada</h3>
-                <p>Pão, hambúrguer, queijo, alface, tomate, maionese</p>
-                <span>R$ 18,00</span>
-                <button class="adicionar-carrinho" data-nome="X-Salada" data-preco="18,00">Adicionar ao Carrinho</button>
-            </div>
-            <div class="item">
-                <img src="images/xbacon.jpg" alt="X-Bacon">
-                <h3>X-Bacon</h3>
-                <p>Pão, hambúrguer, queijo, bacon, molho especial</p>
-                <span>R$ 20,00</span>
-                <button class="adicionar-carrinho" data-nome="X-Bacon" data-preco="20,00">Adicionar ao Carrinho</button>
-            </div>
-            <div class="item">
-                <img src="images/burger.jpg" alt="X-Burguer">
-                <h3>X-Burguer</h3>
-                <p>Pão, hambúrguer, queijo, alface, tomate</p>
-                <span>R$ 15,00</span>
-                <button class="adicionar-carrinho" data-nome="X-Burguer" data-preco="15,00">Adicionar ao Carrinho</button>
-            </div>
-            <div class="item">
-                <img src="images/xbacon2.jpg" alt="X-Salada">
-                <h3>X-Salada</h3>
-                <p>Pão, hambúrguer, queijo, alface, tomate, maionese</p>
-                <span>R$ 18,00</span>
-                <button class="adicionar-carrinho" data-nome="X-Salada" data-preco="18,00">Adicionar ao Carrinho</button>
-            </div>
-            <div class="item">
-                <img src="images/xbacon.jpg" alt="X-Bacon">
-                <h3>X-Bacon</h3>
-                <p>Pão, hambúrguer, queijo, bacon, molho especial</p>
-                <span>R$ 20,00</span>
-                <button class="adicionar-carrinho" data-nome="X-Bacon" data-preco="20,00">Adicionar ao Carrinho</button>
-            </div>
-            <div class="item">
-                <img src="images/burger.jpg" alt="X-Burguer">
-                <h3>X-Burguer</h3>
-                <p>Pão, hambúrguer, queijo, alface, tomate</p>
-                <span>R$ 15,00</span>
-                <button class="adicionar-carrinho" data-nome="X-Burguer" data-preco="15,00">Adicionar ao Carrinho</button>
-            </div>
-            <div class="item">
-                <img src="images/xbacon2.jpg" alt="X-Salada">
-                <h3>X-Salada</h3>
-                <p>Pão, hambúrguer, queijo, alface, tomate, maionese</p>
-                <span>R$ 18,00</span>
-                <button class="adicionar-carrinho" data-nome="X-Salada" data-preco="18,00">Adicionar ao Carrinho</button>
-            </div>
-            <div class="item">
-                <img src="images/xbacon.jpg" alt="X-Bacon">
-                <h3>X-Bacon</h3>
-                <p>Pão, hambúrguer, queijo, bacon, molho especial</p>
-                <span>R$ 20,00</span>
-                <button class="adicionar-carrinho" data-nome="X-Bacon" data-preco="20,00">Adicionar ao Carrinho</button>
-            </div>
-        </section>
+                <div class="grid-produtos">
+                    <!-- X-Burguer -->
+                    <article class="produto-card">
+                        <img src="assets/images/burger.jpg" 
+                             alt="X-Burguer tradicional com queijo derretido" 
+                             class="produto-imagem"
+                             loading="lazy">
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">X-Burguer</h3>
+                            <p class="produto-descricao">Pão, hambúrguer artesanal, queijo, alface crocante, tomate</p>
+                            <div class="produto-compra">
+                                <span class="produto-preco">R$ 15,00</span>
+                                <button class="btn-ver-mais" 
+                                        onclick="abrirModal('modal-xburguer')"
+                                        aria-label="Ver mais detalhes do X-Burguer">
+                                    Ver Mais
+                                </button>
+                                <button class="adicionar-carrinho" 
+                                        data-nome="X-Burguer" 
+                                        data-preco="15,00"
+                                        aria-label="Adicionar X-Burguer ao carrinho">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </article>
 
-        <section id="contato">
-            <h2>Entre em Contato</h2>
-            <p>WhatsApp: (11) 99999-9999</p>
-            <p>Instagram: @deliverylanches</p>
-        </section>
+                    <!-- X-Salada -->
+                    <article class="produto-card">
+                        <img src="assets/images/xbacon2.jpg" 
+                             alt="X-Salada completo com vegetais frescos" 
+                             class="produto-imagem"
+                             loading="lazy">
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">X-Salada</h3>
+                            <p class="produto-descricao">Pão, hambúrguer artesanal, queijo, alface, tomate, maionese especial</p>
+                            <div class="produto-compra">
+                                <span class="produto-preco">R$ 18,00</span>
+                                <button class="btn-ver-mais" 
+                                        onclick="abrirModal('modal-xsalada')"
+                                        aria-label="Ver mais detalhes do X-Salada">
+                                    Ver Mais
+                                </button>
+                                <button class="adicionar-carrinho" 
+                                        data-nome="X-Salada" 
+                                        data-preco="18,00"
+                                        aria-label="Adicionar X-Salada ao carrinho">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- X-Bacon -->
+                    <article class="produto-card">
+                        <img src="assets/images/xbacon.jpg" 
+                             alt="X-Bacon com bacon crocante" 
+                             class="produto-imagem"
+                             loading="lazy">
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">X-Bacon</h3>
+                            <p class="produto-descricao">Pão, hambúrguer artesanal, queijo, bacon crocante, molho especial</p>
+                            <div class="produto-compra">
+                                <span class="produto-preco">R$ 20,00</span>
+                                <button class="btn-ver-mais" 
+                                        onclick="abrirModal('modal-xbacon')"
+                                        aria-label="Ver mais detalhes do X-Bacon">
+                                    Ver Mais
+                                </button>
+                                <button class="adicionar-carrinho" 
+                                        data-nome="X-Bacon" 
+                                        data-preco="20,00"
+                                        aria-label="Adicionar X-Bacon ao carrinho">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- X-Tudo -->
+                    <article class="produto-card">
+                        <img src="assets/images/xtudo.jpg" 
+                             alt="X-Tudo completo com todos os ingredientes" 
+                             class="produto-imagem"
+                             loading="lazy">
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">X-Tudo</h3>
+                            <p class="produto-descricao">O maior e mais completo! Hambúrguer, queijo, bacon, ovo, calabresa, salada completa</p>
+                            <div class="produto-compra">
+                                <span class="produto-preco">R$ 25,00</span>
+                                <button class="btn-ver-mais" 
+                                        onclick="abrirModal('modal-xtudo')"
+                                        aria-label="Ver mais detalhes do X-Tudo">
+                                    Ver Mais
+                                </button>
+                                <button class="adicionar-carrinho" 
+                                        data-nome="X-Tudo" 
+                                        data-preco="25,00"
+                                        aria-label="Adicionar X-Tudo ao carrinho">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- X-Frango -->
+                    <article class="produto-card">
+                        <img src="assets/images/xfrango.jpg" 
+                             alt="X-Frango com filé suculento" 
+                             class="produto-imagem"
+                             loading="lazy">
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">X-Frango</h3>
+                            <p class="produto-descricao">Filé de frango grelhado, queijo derretido, alface, tomate e maionese especial</p>
+                            <div class="produto-compra">
+                                <span class="produto-preco">R$ 18,00</span>
+                                <button class="btn-ver-mais" 
+                                        onclick="abrirModal('modal-xfrango')"
+                                        aria-label="Ver mais detalhes do X-Frango">
+                                    Ver Mais
+                                </button>
+                                <button class="adicionar-carrinho" 
+                                        data-nome="X-Frango" 
+                                        data-preco="18,00"
+                                        aria-label="Adicionar X-Frango ao carrinho">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- X-Calabresa -->
+                    <article class="produto-card">
+                        <img src="assets/images/xcalabresa.jpg" 
+                             alt="X-Calabresa com calabresa grelhada" 
+                             class="produto-imagem"
+                             loading="lazy">
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">X-Calabresa</h3>
+                            <p class="produto-descricao">Calabresa grelhada, queijo, cebola caramelizada, maionese especial</p>
+                            <div class="produto-compra">
+                                <span class="produto-preco">R$ 20,00</span>
+                                <button class="btn-ver-mais" 
+                                        onclick="abrirModal('modal-xcalabresa')"
+                                        aria-label="Ver mais detalhes do X-Calabresa">
+                                    Ver Mais
+                                </button>
+                                <button class="adicionar-carrinho" 
+                                        data-nome="X-Calabresa" 
+                                        data-preco="20,00"
+                                        aria-label="Adicionar X-Calabresa ao carrinho">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Artesanal -->
+                    <article class="produto-card">
+                        <img src="assets/images/artezanal.jpg" 
+                             alt="Hambúrguer Artesanal Especial" 
+                             class="produto-imagem"
+                             loading="lazy">
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">Artesanal</h3>
+                            <p class="produto-descricao">Hambúrguer artesanal 180g, queijo especial, molho da casa, cebola caramelizada</p>
+                            <div class="produto-compra">
+                                <span class="produto-preco">R$ 28,00</span>
+                                <button class="btn-ver-mais" 
+                                        onclick="abrirModal('modal-artesanal')"
+                                        aria-label="Ver mais detalhes do Hambúrguer Artesanal">
+                                    Ver Mais
+                                </button>
+                                <button class="adicionar-carrinho" 
+                                        data-nome="Artesanal" 
+                                        data-preco="28,00"
+                                        aria-label="Adicionar Hambúrguer Artesanal ao carrinho">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Duplo Queijo -->
+                    <article class="produto-card">
+                        <img src="assets/images/duploqueijo.png" 
+                             alt="Hambúrguer Duplo com Queijo" 
+                             class="produto-imagem"
+                             loading="lazy">
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">Duplo Queijo</h3>
+                            <p class="produto-descricao">Dois hambúrgueres, queijo cheddar duplo, molho especial</p>
+                            <div class="produto-compra">
+                                <span class="produto-preco">R$ 30,00</span>
+                                <button class="btn-ver-mais" 
+                                        onclick="abrirModal('modal-duploqueijo')"
+                                        aria-label="Ver mais detalhes do Duplo Queijo">
+                                    Ver Mais
+                                </button>
+                                <button class="adicionar-carrinho" 
+                                        data-nome="Duplo Queijo" 
+                                        data-preco="30,00"
+                                        aria-label="Adicionar Duplo Queijo ao carrinho">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Especial -->
+                    <article class="produto-card">
+                        <img src="assets/images/especial.avif" 
+                             alt="Hambúrguer Especial da Casa" 
+                             class="produto-imagem"
+                             loading="lazy">
+                        <div class="produto-info">
+                            <h3 class="produto-titulo">Especial da Casa</h3>
+                            <p class="produto-descricao">Hambúrguer premium, queijo gruyère, cogumelos, cebola caramelizada, molho especial</p>
+                            <div class="produto-compra">
+                                <span class="produto-preco">R$ 35,00</span>
+                                <button class="btn-ver-mais" 
+                                        onclick="abrirModal('modal-especial')"
+                                        aria-label="Ver mais detalhes do Hambúrguer Especial">
+                                    Ver Mais
+                                </button>
+                                <button class="adicionar-carrinho" 
+                                        data-nome="Especial da Casa" 
+                                        data-preco="35,00"
+                                        aria-label="Adicionar Hambúrguer Especial ao carrinho">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Seção de Contato -->
+            <section id="contato" class="secao-contato">
+                <header class="secao-header">
+                    <h2 class="titulo-secao">Entre em Contato</h2>
+                    <p class="subtitulo-secao">Estamos sempre prontos para atender você da melhor forma</p>
+                </header>
+
+                <div class="contato-info">
+                    <div class="contato-item">
+                        <i class="fas fa-phone-alt contato-icon"></i>
+                        <h3>WhatsApp</h3>
+                        <p>Peça pelo WhatsApp e receba seu pedido rapidamente</p>
+                        <a href="https://wa.me/5511999999999" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="contato-link">
+                            <i class="fab fa-whatsapp"></i>
+                            (11) 99999-9999
+                        </a>
+                        <div class="horario-funcionamento">
+                            <p><strong>Horário de Funcionamento:</strong></p>
+                            <p>Segunda a Sábado: 11h às 23h</p>
+                            <p>Domingo: 11h às 22h</p>
+                        </div>
+                    </div>
+
+                    <div class="contato-item">
+                        <i class="fas fa-map-marker-alt contato-icon"></i>
+                        <h3>Localização</h3>
+                        <p>Venha nos visitar ou peça para entrega</p>
+                        <p>Rua Exemplo, 123 - Bairro</p>
+                        <p>São Paulo - SP</p>
+                        <a href="https://maps.google.com" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="contato-link">
+                            <i class="fas fa-directions"></i>
+                            Ver no Mapa
+                        </a>
+                    </div>
+
+                    <div class="contato-item">
+                        <i class="fas fa-hashtag contato-icon"></i>
+                        <h3>Redes Sociais</h3>
+                        <p>Siga-nos e fique por dentro das novidades</p>
+                        <a href="https://instagram.com/deliverylanches" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="contato-link">
+                            <i class="fab fa-instagram"></i>
+                            @deliverylanches
+                        </a>
+                        <a href="https://facebook.com/deliverylanches" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="contato-link">
+                            <i class="fab fa-facebook"></i>
+                            /deliverylanches
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
     <!-- Carrinho Lateral -->
-    <div id="carrinho-aba">
-        <div id="carrinho-header">
-            <h2>Carrinho</h2>
-            <button id="fechar-carrinho">&times;</button>
+    <aside id="carrinho-aba" class="carrinho" aria-label="Carrinho de compras">
+        <div class="carrinho-header">
+            <h2>Seu Carrinho</h2>
+            <button id="fechar-carrinho" 
+                    class="fechar-btn" 
+                    aria-label="Fechar carrinho">
+                &times;
+            </button>
         </div>
-        <ul id="itens-carrinho">
-            <!-- Itens adicionados ao carrinho aparecerão aqui -->
-        </ul>
-        <p><strong>Total: R$ <span id="total">0,00</span></strong></p>
-        <p><strong>Itens: <span id="contador-itens">0</span></strong></p>
-        <h3>Escolha a forma de pagamento:</h3>
-        <label>
-            <input type="radio" name="pagamento" value="Dinheiro" checked> Dinheiro
-        </label>
-        <label>
-            <input type="radio" name="pagamento" value="Cartão"> Cartão
-        </label>
-        <label>
-            <input type="radio" name="pagamento" value="Pix"> Pix
-        </label>
-        <br>
-        <button id="enviar-pedido">Finalizar Pedido</button>
+        
+        <div class="carrinho-conteudo">
+            <div class="carrinho-vazio" id="carrinho-vazio">
+                <p>Seu carrinho está vazio</p>
+                <p>Adicione itens para continuar</p>
+            </div>
+
+            <div class="carrinho-items">
+                <ul id="itens-carrinho" 
+                    class="lista-itens" 
+                    aria-label="Lista de itens no carrinho">
+                    <!-- Itens do carrinho serão inseridos via JavaScript -->
+                </ul>
+
+                <div class="carrinho-resumo">
+                    <div class="resumo-item">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">R$ 0,00</span>
+                    </div>
+                    <div class="resumo-item">
+                        <span>Taxa de Entrega:</span>
+                        <span id="taxa-entrega">R$ 0,00</span>
+                    </div>
+                    <div class="resumo-item taxa-cartao hidden" id="taxa-cartao-div">
+                        <span>Taxa Cartão (1.5%):</span>
+                        <span id="taxa-cartao">R$ 0,00</span>
+                    </div>
+                    <div class="resumo-item total">
+                        <strong>Total:</strong>
+                        <strong id="total">R$ 0,00</strong>
+                    </div>
+                </div>
+            </div>
+
+            <form class="forma-pagamento">
+                <h3>Forma de Pagamento</h3>
+                <div class="opcoes-pagamento">
+                    <label class="opcao-pagamento">
+                        <input type="radio" 
+                               name="pagamento" 
+                               value="dinheiro" 
+                               checked>
+                        <span class="texto-opcao">Dinheiro</span>
+                    </label>
+                    <label class="opcao-pagamento">
+                        <input type="radio" 
+                               name="pagamento" 
+                               value="pix">
+                        <span class="texto-opcao">Pix</span>
+                    </label>
+                    <label class="opcao-pagamento">
+                        <input type="radio" 
+                               name="pagamento" 
+                               value="credito">
+                        <span class="texto-opcao">Cartão de Crédito</span>
+                    </label>
+                    <label class="opcao-pagamento">
+                        <input type="radio" 
+                               name="pagamento" 
+                               value="debito">
+                        <span class="texto-opcao">Cartão de Débito</span>
+                    </label>
+                </div>
+
+                <div class="troco-section hidden" id="troco-section">
+                    <h3>Troco para quanto?</h3>
+                    <div class="input-group">
+                        <span class="prefix">R$</span>
+                        <input type="number" 
+                               id="troco-input" 
+                               min="0" 
+                               step="0.01" 
+                               placeholder="0,00">
+                    </div>
+                </div>
+            </form>
+
+            <div class="endereco-entrega">
+                <h3>Endereço de Entrega</h3>
+                
+                <div class="endereco-opcoes">
+                    <button type="button" 
+                            class="btn-mapa" 
+                            id="btn-usar-mapa"
+                            aria-label="Selecionar endereço no mapa">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Usar Mapa
+                    </button>
+                    
+                    <button type="button" 
+                            class="btn-manual" 
+                            id="btn-endereco-manual"
+                            aria-label="Digitar endereço manualmente">
+                        <i class="fas fa-pencil-alt"></i>
+                        Digite seu endereço
+                    </button>
+                </div>
+
+                <form class="form-endereco hidden" id="form-endereco">
+                    <div class="input-group">
+                        <label for="cep">CEP:</label>
+                        <input type="text" 
+                               id="cep" 
+                               name="cep" 
+                               maxlength="9" 
+                               placeholder="00000-000" 
+                               required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="rua">Rua:</label>
+                        <input type="text" 
+                               id="rua" 
+                               name="rua" 
+                               required>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="numero">Número:</label>
+                            <input type="text" 
+                                   id="numero" 
+                                   name="numero" 
+                                   required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="complemento">Complemento:</label>
+                            <input type="text" 
+                                   id="complemento" 
+                                   name="complemento" 
+                                   placeholder="Opcional">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="bairro">Bairro:</label>
+                        <input type="text" 
+                               id="bairro" 
+                               name="bairro" 
+                               required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="referencia">Ponto de Referência:</label>
+                        <input type="text" 
+                               id="referencia" 
+                               name="referencia" 
+                               placeholder="Opcional">
+                    </div>
+                </form>
+
+                <div id="mapa-container" class="mapa-container hidden">
+                    <!-- O mapa será carregado aqui via JavaScript -->
+                </div>
+            </div>
+
+            <button id="enviar-pedido" 
+                    class="btn-finalizar"
+                    disabled
+                    aria-label="Finalizar pedido">
+                Finalizar Pedido
+            </button>
+        </div>
+    </aside>
+
+    <!-- Template do Item do Carrinho -->
+    <template id="template-item-carrinho">
+        <li class="item-carrinho">
+            <div class="item-info">
+                <h4 class="item-titulo"></h4>
+                <p class="item-preco"></p>
+            </div>
+            <div class="item-controles">
+                <div class="quantidade-controle">
+                    <button class="btn-quantidade diminuir" aria-label="Diminuir quantidade">-</button>
+                    <span class="quantidade">1</span>
+                    <button class="btn-quantidade aumentar" aria-label="Aumentar quantidade">+</button>
+                </div>
+                <button class="btn-remover" aria-label="Remover item">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </li>
+    </template>
+
+    <!-- Modais dos Produtos -->
+    <div id="modal-xburguer" class="modal" aria-label="Modal do X-Burguer">
+        <div class="modal-conteudo" role="dialog">
+            <div class="modal-header">
+                <h2>X-Burguer</h2>
+                <button class="fechar-modal" 
+                        onclick="fecharModal('modal-xburguer')"
+                        aria-label="Fechar modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="assets/images/burger.jpg" 
+                     alt="X-Burguer tradicional com queijo derretido" 
+                     class="modal-imagem">
+                <div class="modal-info">
+                    <h3>Descrição</h3>
+                    <p>Nosso clássico X-Burguer é feito com pão artesanal, hambúrguer suculento de 150g de carne bovina selecionada, queijo cheddar derretido, alface crocante e tomate fresco. Uma explosão de sabores em cada mordida!</p>
+                    
+                    <h3>Ingredientes</h3>
+                    <ul class="lista-ingredientes">
+                        <li>Pão artesanal tostado</li>
+                        <li>Hambúrguer bovino 150g</li>
+                        <li>Queijo cheddar</li>
+                        <li>Alface americana</li>
+                        <li>Tomate</li>
+                    </ul>
+
+                    <div class="modal-preco">
+                        <span class="preco-destaque">R$ 15,00</span>
+                        <button class="adicionar-carrinho" 
+                                data-nome="X-Burguer" 
+                                data-preco="15,00"
+                                aria-label="Adicionar X-Burguer ao carrinho">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Delivery de Lanches. Todos os direitos reservados.</p>
+    <div id="modal-xsalada" class="modal" aria-label="Modal do X-Salada">
+        <div class="modal-conteudo" role="dialog">
+            <div class="modal-header">
+                <h2>X-Salada</h2>
+                <button class="fechar-modal" 
+                        onclick="fecharModal('modal-xsalada')"
+                        aria-label="Fechar modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="assets/images/xbacon2.jpg" 
+                     alt="X-Salada completo" 
+                     class="modal-imagem">
+                <div class="modal-info">
+                    <h3>Descrição</h3>
+                    <p>O X-Salada é a escolha perfeita para quem busca um lanche completo e equilibrado. Preparado com ingredientes frescos e um hambúrguer suculento de 150g, acompanhado de vegetais crocantes e nossa maionese especial.</p>
+                    
+                    <h3>Ingredientes</h3>
+                    <ul class="lista-ingredientes">
+                        <li>Pão artesanal tostado</li>
+                        <li>Hambúrguer bovino 150g</li>
+                        <li>Queijo prato</li>
+                        <li>Alface americana</li>
+                        <li>Tomate</li>
+                        <li>Cebola roxa</li>
+                        <li>Maionese especial da casa</li>
+                    </ul>
+
+                    <div class="modal-preco">
+                        <span class="preco-destaque">R$ 18,00</span>
+                        <button class="adicionar-carrinho" 
+                                data-nome="X-Salada" 
+                                data-preco="18,00"
+                                aria-label="Adicionar X-Salada ao carrinho">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-xbacon" class="modal" aria-label="Modal do X-Bacon">
+        <div class="modal-conteudo" role="dialog">
+            <div class="modal-header">
+                <h2>X-Bacon</h2>
+                <button class="fechar-modal" 
+                        onclick="fecharModal('modal-xbacon')"
+                        aria-label="Fechar modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="assets/images/xbacon.jpg" 
+                     alt="X-Bacon com bacon crocante" 
+                     class="modal-imagem">
+                <div class="modal-info">
+                    <h3>Descrição</h3>
+                    <p>Para os amantes de bacon, nosso X-Bacon é irresistível! Combinamos um suculento hambúrguer de 150g com generosas fatias de bacon crocante, queijo derretido e nosso molho especial secreto.</p>
+                    
+                    <h3>Ingredientes</h3>
+                    <ul class="lista-ingredientes">
+                        <li>Pão artesanal tostado</li>
+                        <li>Hambúrguer bovino 150g</li>
+                        <li>Queijo cheddar</li>
+                        <li>Bacon crocante</li>
+                        <li>Molho especial da casa</li>
+                    </ul>
+
+                    <div class="modal-preco">
+                        <span class="preco-destaque">R$ 20,00</span>
+                        <button class="adicionar-carrinho" 
+                                data-nome="X-Bacon" 
+                                data-preco="20,00"
+                                aria-label="Adicionar X-Bacon ao carrinho">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Novos Modais -->
+    <div id="modal-xtudo" class="modal" aria-label="Modal do X-Tudo">
+        <div class="modal-conteudo" role="dialog">
+            <div class="modal-header">
+                <h2>X-Tudo</h2>
+                <button class="fechar-modal" 
+                        onclick="fecharModal('modal-xtudo')"
+                        aria-label="Fechar modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="assets/images/xtudo.jpg" 
+                     alt="X-Tudo completo com todos os ingredientes" 
+                     class="modal-imagem">
+                <div class="modal-info">
+                    <h3>Descrição</h3>
+                    <p>O X-Tudo é a escolha perfeita para quem quer experimentar todos os sabores em um só lanche! Com hambúrguer suculento, queijo derretido, bacon crocante, ovo, calabresa e salada completa, este é o nosso lanche mais completo.</p>
+                    
+                    <h3>Ingredientes</h3>
+                    <ul class="lista-ingredientes">
+                        <li>Pão especial tostado</li>
+                        <li>Hambúrguer bovino 180g</li>
+                        <li>Queijo cheddar</li>
+                        <li>Bacon crocante</li>
+                        <li>Ovo frito</li>
+                        <li>Calabresa grelhada</li>
+                        <li>Alface americana</li>
+                        <li>Tomate</li>
+                        <li>Cebola roxa</li>
+                        <li>Molho especial da casa</li>
+                    </ul>
+
+                    <div class="modal-preco">
+                        <span class="preco-destaque">R$ 25,00</span>
+                        <button class="adicionar-carrinho" 
+                                data-nome="X-Tudo" 
+                                data-preco="25,00"
+                                aria-label="Adicionar X-Tudo ao carrinho">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-xfrango" class="modal" aria-label="Modal do X-Frango">
+        <div class="modal-conteudo" role="dialog">
+            <div class="modal-header">
+                <h2>X-Frango</h2>
+                <button class="fechar-modal" 
+                        onclick="fecharModal('modal-xfrango')"
+                        aria-label="Fechar modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="assets/images/xfrango.jpg" 
+                     alt="X-Frango com filé suculento" 
+                     class="modal-imagem">
+                <div class="modal-info">
+                    <h3>Descrição</h3>
+                    <p>Nosso X-Frango é preparado com um filé de frango grelhado e suculento, combinado com queijo derretido e vegetais frescos. Uma opção mais leve mas igualmente deliciosa!</p>
+                    
+                    <h3>Ingredientes</h3>
+                    <ul class="lista-ingredientes">
+                        <li>Pão artesanal tostado</li>
+                        <li>Filé de frango grelhado</li>
+                        <li>Queijo prato</li>
+                        <li>Alface americana</li>
+                        <li>Tomate</li>
+                        <li>Maionese especial</li>
+                    </ul>
+
+                    <div class="modal-preco">
+                        <span class="preco-destaque">R$ 18,00</span>
+                        <button class="adicionar-carrinho" 
+                                data-nome="X-Frango" 
+                                data-preco="18,00"
+                                aria-label="Adicionar X-Frango ao carrinho">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-xcalabresa" class="modal" aria-label="Modal do X-Calabresa">
+        <div class="modal-conteudo" role="dialog">
+            <div class="modal-header">
+                <h2>X-Calabresa</h2>
+                <button class="fechar-modal" 
+                        onclick="fecharModal('modal-xcalabresa')"
+                        aria-label="Fechar modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="assets/images/xcalabresa.jpg" 
+                     alt="X-Calabresa com calabresa grelhada" 
+                     class="modal-imagem">
+                <div class="modal-info">
+                    <h3>Descrição</h3>
+                    <p>O X-Calabresa é uma explosão de sabores! Preparado com calabresa grelhada na medida certa, queijo derretido e nossa famosa cebola caramelizada.</p>
+                    
+                    <h3>Ingredientes</h3>
+                    <ul class="lista-ingredientes">
+                        <li>Pão artesanal tostado</li>
+                        <li>Calabresa grelhada</li>
+                        <li>Queijo mussarela</li>
+                        <li>Cebola caramelizada</li>
+                        <li>Maionese especial</li>
+                    </ul>
+
+                    <div class="modal-preco">
+                        <span class="preco-destaque">R$ 20,00</span>
+                        <button class="adicionar-carrinho" 
+                                data-nome="X-Calabresa" 
+                                data-preco="20,00"
+                                aria-label="Adicionar X-Calabresa ao carrinho">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-artesanal" class="modal" aria-label="Modal do Hambúrguer Artesanal">
+        <div class="modal-conteudo" role="dialog">
+            <div class="modal-header">
+                <h2>Hambúrguer Artesanal</h2>
+                <button class="fechar-modal" 
+                        onclick="fecharModal('modal-artesanal')"
+                        aria-label="Fechar modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="assets/images/artezanal.jpg" 
+                     alt="Hambúrguer Artesanal Especial" 
+                     class="modal-imagem">
+                <div class="modal-info">
+                    <h3>Descrição</h3>
+                    <p>Nosso hambúrguer artesanal é preparado com blend especial de carnes nobres, 180g de pura suculência. Acompanha queijo especial e nosso molho secreto da casa.</p>
+                    
+                    <h3>Ingredientes</h3>
+                    <ul class="lista-ingredientes">
+                        <li>Pão brioche</li>
+                        <li>Blend artesanal 180g</li>
+                        <li>Queijo especial</li>
+                        <li>Cebola caramelizada</li>
+                        <li>Molho da casa</li>
+                    </ul>
+
+                    <div class="modal-preco">
+                        <span class="preco-destaque">R$ 28,00</span>
+                        <button class="adicionar-carrinho" 
+                                data-nome="Artesanal" 
+                                data-preco="28,00"
+                                aria-label="Adicionar Hambúrguer Artesanal ao carrinho">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-duploqueijo" class="modal" aria-label="Modal do Duplo Queijo">
+        <div class="modal-conteudo" role="dialog">
+            <div class="modal-header">
+                <h2>Duplo Queijo</h2>
+                <button class="fechar-modal" 
+                        onclick="fecharModal('modal-duploqueijo')"
+                        aria-label="Fechar modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="assets/images/duploqueijo.jpg" 
+                     alt="Hambúrguer Duplo com Queijo" 
+                     class="modal-imagem">
+                <div class="modal-info">
+                    <h3>Descrição</h3>
+                    <p>Para os amantes de queijo! Dois suculentos hambúrgueres cobertos com generosas camadas de queijo cheddar derretido e nosso molho especial.</p>
+                    
+                    <h3>Ingredientes</h3>
+                    <ul class="lista-ingredientes">
+                        <li>Pão especial</li>
+                        <li>2 Hambúrgueres de 100g</li>
+                        <li>Queijo cheddar duplo</li>
+                        <li>Molho especial</li>
+                    </ul>
+
+                    <div class="modal-preco">
+                        <span class="preco-destaque">R$ 30,00</span>
+                        <button class="adicionar-carrinho" 
+                                data-nome="Duplo Queijo" 
+                                data-preco="30,00"
+                                aria-label="Adicionar Duplo Queijo ao carrinho">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-especial" class="modal" aria-label="Modal do Hambúrguer Especial">
+        <div class="modal-conteudo" role="dialog">
+            <div class="modal-header">
+                <h2>Especial da Casa</h2>
+                <button class="fechar-modal" 
+                        onclick="fecharModal('modal-especial')"
+                        aria-label="Fechar modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="assets/images/especial.avif" 
+                     alt="Hambúrguer Especial da Casa" 
+                     class="modal-imagem">
+                <div class="modal-info">
+                    <h3>Descrição</h3>
+                    <p>O hambúrguer premium da casa! Preparado com ingredientes selecionados, blend especial, queijo gruyère importado, cogumelos frescos e cebola caramelizada.</p>
+                    
+                    <h3>Ingredientes</h3>
+                    <ul class="lista-ingredientes">
+                        <li>Pão brioche especial</li>
+                        <li>Blend premium 200g</li>
+                        <li>Queijo gruyère</li>
+                        <li>Cogumelos salteados</li>
+                        <li>Cebola caramelizada</li>
+                        <li>Molho especial da casa</li>
+        </ul>
+
+                    <div class="modal-preco">
+                        <span class="preco-destaque">R$ 35,00</span>
+                        <button class="adicionar-carrinho" 
+                                data-nome="Especial da Casa" 
+                                data-preco="35,00"
+                                aria-label="Adicionar Hambúrguer Especial ao carrinho">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="rodape">
+        <div class="container">
+            <p class="copyright">&copy; 2024 Delivery de Lanches. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Scripts -->
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/maps.js"></script>
 </body>
 </html>
